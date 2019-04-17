@@ -12,7 +12,7 @@ const server = new ApolloServer({
   playground: true
 })
 
-server.listen().then(({ port }) => {
-  winston.info(` 🚀 Apollo Server on http://localhost:${port}`)
+server.listen().then(({ url }) => {
+  winston.info(` 🚀 Apollo Server on http://localhost:${url}`)
 })
 export default server
