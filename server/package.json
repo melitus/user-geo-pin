@@ -1,14 +1,13 @@
 {
-  "name": "geopins",
+  "name": "user-geo-pin",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "src/server/index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node ./server/index.js",
+    "start": "nodemon --exec babel-node --ignore client/ ./src/server/index.js",
     "format": "prettier --write '**/*.{js}'",
     "lint": "eslint .",
-    "test": "yarn run lint",
-    "dev": "nodemon --ignore client/ server.js"
+    "test": "yarn run lint"
   },
   "keywords": [],
   "author": "",
