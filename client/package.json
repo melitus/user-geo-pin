@@ -16,9 +16,10 @@
     "mapbox-gl": "^0.53.1",
     "react": "^16.8.6",
     "react-apollo": "^2.5.4",
+    "react-dom": "^16.8.6",
     "react-google-login": "^5.0.4",
     "react-map-gl": "^4.1.2",
-    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "subscriptions-transport-ws": "^0.9.15"
   },

@@ -12,7 +12,8 @@ module.exports = {
     name: process.env.APP_NAME,
     port: process.env.APP_PORT || 8000,
     host: process.env.HOST || 'localhost',
-    env: process.env.NODE_ENV
+    env: process.env.NODE_ENV,
+    oAuth: process.env.OAUTH_CLIENT_ID
   },
   mongo: {
     uri:
