@@ -1,15 +1,15 @@
-const user = {
-  _id: '1',
-  name: 'sunday',
-  email: 'asmelitus@gmail.com',
-  picture: 'asmmmm.com'
+import { AuthenticationError } from 'apollo-server'
+
+const authenticated = next => (root, args, ctx, info) => {
+  if (!ctx.currentUser) {
+    throw new AuthenticationError('You Must be logged in')
+  }
+  return next(root, args, ctx, info)
 }
 
 const resolvers = {
   Query: {
-    me: () => {
-      return user
-    }
+    me: authenticated((root, args, ctx) => ctx.currentUser)
   }
 }
 

@@ -4,14 +4,11 @@ import { appKey } from '../config/credentials'
 
 const client = new OAuth2Client(appKey.oAuth)
 
-const findOrCreateUser = async token => {
-  // verify auth token
+export const findOrCreateUser = async token => {
   const googleUser = await verifyAuthToken(token)
-  // check if user exist
   const user = await checkIfUserExists(googleUser.email)
-  // if user exist, return them, otherwise, create new user in db
-
-  return user || createNewUser(googleUser)
+  // eslint-disable-next-line no-unneeded-ternary
+  return user ? user : createNewUser(googleUser)
 }
 
 const verifyAuthToken = async token => {
@@ -34,5 +31,3 @@ const createNewUser = googleUser => {
   const user = { name, email, picture }
   return new User(user).save()
 }
-
-export default findOrCreateUser
