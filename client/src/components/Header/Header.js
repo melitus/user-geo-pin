@@ -13,7 +13,41 @@ const Header = ({ classes }) => {
 
   const {state} = useContext(Context)
   const { currentUser } = state
-  return <div>Header</div>;
+  return (
+    <div className={classes.root}>
+     <AppBar position='static'>
+        <Toolbar>
+          <div className={classes.grow}>
+            <MapIcon className={classes.icon}/>
+            <Typography
+             component='h1'
+             variant='h6'
+             color='inherit'
+             noWrap
+            >
+              User Geo Pins
+            </Typography>
+            {currentUser && (<div className={classes.grow}> 
+             <img 
+               className={classes.picture}
+               src={currentUser.picture}
+               alt={currentUser.name}
+             />
+             <Typography
+              variant="h5"
+              color="inherit"
+              noWrap
+             >
+               {currentUser.name}
+             </Typography>
+            </div>
+            )}
+          </div>
+        </Toolbar>
+     </AppBar>
+  </div>
+  )
+  
 };
 
 const styles = theme => ({
