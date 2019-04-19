@@ -16,7 +16,7 @@ const Header = ({ classes }) => {
   const { currentUser } = state
   return (
     <div className={classes.root}>
-     <AppBar position='static'>
+     <AppBar position='static' style={{backgroundColor:'#2750b0'}}>
         <Toolbar>
           <div className={classes.grow}>
             <MapIcon className={classes.icon}/>
@@ -28,6 +28,7 @@ const Header = ({ classes }) => {
             >
               User Geo Pins
             </Typography>
+            </div>
             {currentUser && (<div className={classes.grow}> 
              <img 
                className={classes.picture}
@@ -41,9 +42,10 @@ const Header = ({ classes }) => {
              >
                {currentUser.name}
              </Typography>
-            </div>
+             </div>
             )}
-          </div>
+          
+          <SignOut />
         </Toolbar>
      </AppBar>
   </div>
@@ -71,7 +73,8 @@ const styles = theme => ({
   picture: {
     height: "50px",
     borderRadius: "90%",
-    marginRight: theme.spacing.unit * 2
+    marginRight: theme.spacing.unit * 2,
+    
   }
 });
 
