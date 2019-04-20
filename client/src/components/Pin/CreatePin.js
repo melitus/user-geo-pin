@@ -12,13 +12,15 @@ import SaveIcon from "@material-ui/icons/SaveTwoTone";
 
 import Context from '../../context'
 import { CREATE_PIN_MUTATION } from '../../graphql/mutations'
+import { useClient } from '../../utilities/client'
 
 const CreatePin = ({ classes }) => {
-    const [ title, setTitle ] = useState("")
-    const [ image, setImage ] = useState("")
-    const [ content, setContent ] = useState("")
-    const { state, dispatch } = useContext(Context)
-    const [submitting, setSubmitting] = useState(false)
+  const client = useClient();
+  const [ title, setTitle ] = useState("")
+  const [ image, setImage ] = useState("")
+  const [ content, setContent ] = useState("")
+  const { state, dispatch } = useContext(Context)
+  const [submitting, setSubmitting] = useState(false)
 
     const handleDeleteDraft = () =>{
       setTitle("")
@@ -42,14 +44,12 @@ const CreatePin = ({ classes }) => {
       try {
       event.preventDefault();
       setSubmitting(true)
-      const idToken = window.gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token;
-      const endpoint = 'http://localhost:4000/graphql'
-      const client = new GraphQLClient( endpoint, { headers: { authorization: idToken }})
       const url = await handleImageUpload()
-      const { longitude, latitude} = state.draft
+      const { latitude, longitude} = state.draft
       const variables = { title, image:url, content, latitude, longitude}
-     const {CreatePin} = await client.request(CREATE_PIN_MUTATION, variables)
-     console.log('Pin created', {CreatePin})
+     const data = await client.request(CREATE_PIN_MUTATION, variables)
+     const { createPin } = data
+     console.log('Pin created', { createPin })
      handleDeleteDraft();
       } catch (e) {
         setSubmitting(false)

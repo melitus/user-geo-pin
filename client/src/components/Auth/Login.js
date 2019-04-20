@@ -3,16 +3,17 @@ import { GoogleLogin } from 'react-google-login';
 import { GraphQLClient } from 'graphql-request';
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+
 import Context from '../../context'
 import { ME_QUERY } from '../../graphql/queries'
+import { BASE_URL } from '../../utilities/client'
 
 const Login = ({ classes }) => {
  const { dispatch } = useContext(Context)
 const onSuccess = async googleUser => {
   try {
     const idToken = googleUser.getAuthResponse().id_token;
-    const endpoint = 'http://localhost:4000/graphql'
-    const client = new GraphQLClient( endpoint, { headers: { authorization: idToken },})
+    const client = new GraphQLClient( BASE_URL, { headers: { authorization: idToken },})
     const { me } = await client.request(ME_QUERY);
     dispatch({type:'LOGIN_USER', payload:me})
     dispatch({type:'IS_LOGGED_IN', payload: googleUser.isSignedIn()})
