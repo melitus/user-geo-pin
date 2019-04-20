@@ -17,7 +17,6 @@ const server = new ApolloServer({
       if (authToken) {
         // find or create a user
         currentUser = await findOrCreateUser(authToken)
-        console.log({ currentUser })
       }
     } catch (e) {
       console.error(`Unable to verify user with the token ${authToken}`)
