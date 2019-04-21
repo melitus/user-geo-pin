@@ -50,6 +50,7 @@ const CreatePin = ({ classes }) => {
       const data = await client.request(CREATE_PIN_MUTATION, variables)
       const { createPin } = data
       console.log('Pin created', { createPin })
+      dispatch({ type:"CREATE_PIN",payload: createPin })
       handleDeleteDraft();
       } catch (e) {
         setSubmitting(false)

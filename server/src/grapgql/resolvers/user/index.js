@@ -1,4 +1,5 @@
 import { AuthenticationError } from 'apollo-server'
+
 import Pin from '../../../models/Pin'
 
 const authenticated = next => (root, args, ctx, info) => {

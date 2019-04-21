@@ -21,7 +21,7 @@ const typeDefs = gql`
   type Comment {
     text: String
     createdAt: String
-    user: User
+    author: User
   }
   input CreatePinInput {
     title: String
@@ -36,6 +36,7 @@ const typeDefs = gql`
   }
   type Mutation {
     createPin(input: CreatePinInput!): Pin
+    deletePin(pinId: ID!): Pin
   }
 `
 
