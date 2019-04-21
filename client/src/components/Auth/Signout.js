@@ -9,12 +9,12 @@ import Context from '../../context'
 const Signout = ({ classes }) => {
 
   const { dispatch } = useContext(Context);
-   const onSignOut = () => {
+  const onSignOut = () => {
     dispatch({ type: "SIGN_OUT_USER"}) 
   }
   return (
     <GoogleLogout 
-     onLogoutSuccess= {onSignOut}
+    onLogoutSuccess= {onSignOut}
       buttonText="Signout"
       render={( {onClick} ) => (
         <span className={classes.root} onClick={onClick}>

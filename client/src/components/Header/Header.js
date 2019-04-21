@@ -16,38 +16,38 @@ const Header = ({ classes }) => {
   const { currentUser } = state
   return (
     <div className={classes.root}>
-     <AppBar position='static' style={{backgroundColor:'#2750b0'}}>
+    <AppBar position='static' style={{backgroundColor:'#2750b0'}}>
         <Toolbar>
           <div className={classes.grow}>
             <MapIcon className={classes.icon}/>
             <Typography
-             component='h1'
-             variant='h6'
-             color='inherit'
-             noWrap
+            component='h1'
+            variant='h6'
+            color='inherit'
+            noWrap
             >
               User Geo Pins
             </Typography>
             </div>
             {currentUser && (<div className={classes.grow}> 
-             <img 
-               className={classes.picture}
-               src={currentUser.picture}
-               alt={currentUser.name}
-             />
-             <Typography
+            <img 
+              className={classes.picture}
+              src={currentUser.picture}
+              alt={currentUser.name}
+            />
+            <Typography
               variant="h5"
               color="inherit"
               noWrap
-             >
-               {currentUser.name}
-             </Typography>
-             </div>
+            >
+              {currentUser.name}
+            </Typography>
+            </div>
             )}
           
           <SignOut />
         </Toolbar>
-     </AppBar>
+    </AppBar>
   </div>
   )
   

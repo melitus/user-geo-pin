@@ -17,12 +17,12 @@ const Root = () => {
   console.log({state})
   return (
     <Router>
-     <Context.Provider value={{ state, dispatch }}>
+    <Context.Provider value={{ state, dispatch }}>
       <Switch>
         <ProtectedRoute exact path="/" component={App} />
         <Route path="/login" component={Splash} />
       </Switch>
-     </Context.Provider>
+    </Context.Provider>
     </Router>
   );
 };

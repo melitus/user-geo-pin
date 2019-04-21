@@ -17,20 +17,21 @@ const Map = ({ classes }) => {
   const {state, dispatch} = useContext(Context)
   const [viewport, setViewport] = useState(INITIAL_VIEWPORT)
   const [userPosition, setUserPosition] = useState(null)
+
   useEffect(() =>{
         getUserPosition()
   }, [])
-   const getUserPosition = () =>{
-     if('geolocation' in navigator){
-       navigator.geolocation.getCurrentPosition(position => {
-         const {latitude, longitude} = position.coords
-         setViewport({...viewport, latitude, longitude})
-         setUserPosition({latitude, longitude})
-       })
-     }
-   }
+  const getUserPosition = () =>{
+    if('geolocation' in navigator){
+      navigator.geolocation.getCurrentPosition(position => {
+        const {latitude, longitude} = position.coords
+        setViewport({...viewport, latitude, longitude})
+        setUserPosition({latitude, longitude})
+      })
+    }
+  }
 
-   const handleMapClick =({lngLat, leftButton}) =>{
+  const handleMapClick =({lngLat, leftButton}) =>{
       if(!leftButton) return
       if(!state.draft){
         dispatch({type:"CREATE_DRAFT"})
@@ -64,7 +65,7 @@ const Map = ({ classes }) => {
             offsetLeft={-19}
             offsetTop={-37}
           >
-           <PinIcon size={40} color='red'/>
+          <PinIcon size={40} color='red'/>
           
           </Marker>
         )}
@@ -75,7 +76,7 @@ const Map = ({ classes }) => {
             offsetLeft={-19}
             offsetTop={-37}
           >
-           <PinIcon size={40} color='hotpink'/>
+          <PinIcon size={40} color='hotpink'/>
           
           </Marker>
         )}

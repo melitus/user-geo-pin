@@ -15,7 +15,7 @@ const Blog = ({ classes }) => {
   if( !draft ){
     BlogContent = NoContent;
   } else if( draft ) {
-     BlogContent = CreatePin
+    BlogContent = CreatePin
   }
   return (
     <Paper className={classes.root}>

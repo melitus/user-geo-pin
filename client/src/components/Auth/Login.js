@@ -9,7 +9,7 @@ import { ME_QUERY } from '../../graphql/queries'
 import { BASE_URL } from '../../utilities/client'
 
 const Login = ({ classes }) => {
- const { dispatch } = useContext(Context)
+const { dispatch } = useContext(Context)
 const onSuccess = async googleUser => {
   try {
     const idToken = googleUser.getAuthResponse().id_token;
@@ -30,11 +30,11 @@ const onSuccess = async googleUser => {
   return (
     <div className={classes.root}>
     <Typography
-     component="h1"
-     variant="h3"
-     gutterBottom
-     noWrap
-     style={{color: "rgb(66,133,264)"}}
+    component="h1"
+    variant="h3"
+    gutterBottom
+    noWrap
+    style={{color: "rgb(66,133,264)"}}
 
     >
       Welcome

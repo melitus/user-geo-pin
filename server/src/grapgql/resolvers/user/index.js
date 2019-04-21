@@ -10,7 +10,13 @@ const authenticated = next => (root, args, ctx, info) => {
 
 const resolvers = {
   Query: {
-    me: authenticated((root, args, ctx) => ctx.currentUser)
+    me: authenticated((root, args, ctx) => ctx.currentUser),
+    getPins: async (root, args, cts) => {
+      const pins = await Pin.find({})
+        .populate('author')
+        .populate('comments.author')
+      return pins
+    }
   },
   Mutation: {
     createPin: authenticated(async (root, args, ctx) => {
